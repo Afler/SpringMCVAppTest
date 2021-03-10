@@ -1,9 +1,22 @@
 package lev.mvcapptest.models;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class Person {
     private int id;
+
+    @NotEmpty(message = "Name shouldn't be empty!")
+    @Size(min = 2,max = 15, message = "Invalid length of name")
     private String name;
+
+    @Min(value = 0, message = "Age below zero")
     private int age;
+
+    @NotEmpty(message = "Email shouldn't be empty")
+    @Email(message = "Invalid email")
     private String email;
 
     public Person() {
